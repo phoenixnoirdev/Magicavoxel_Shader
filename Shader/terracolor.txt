@@ -1,0 +1,62 @@
+// MIT License (MIT)
+// https://github.com/phoenixnoirdev/magicavoxel-shader_TerraColor
+// Copyright (c) 2021 Phoenixnoir Developpement 
+// GL Shading Language.
+// V. 0.0.1
+//
+//
+//Permets d'ajouter deux couleurs definit selon un pourcentage de chance de placement sur une hauteur minimum et maximum definit.
+//
+//
+// xs terracolor [f] [color] [f] [color] [heightmin] [heightmax]
+//
+//ex: xs terracolor 0.1 241 0.2 201 0 15
+
+
+float rand(vec2 co, float seed) {
+	return fract(sin(dot(co.xy * seed, vec2(12.9898, 78.233))) * 43758.5453);
+}
+
+
+
+float map(vec3 v) {
+	
+	float index = voxel(v);
+	
+	bool na = (iAxis == vec3(0.0, 0.0, 0.0));
+	float x = (na || iAxis.x == 1.0) ? v.x : 1.0;
+	float y = (na || iAxis.y == 1.0) ? v.y : 1.0;
+	float z = (na || iAxis.z == 1.0) ? v.z : 1.0;
+	float j = rand(vec2(x, y), iIter + 1.0);
+	float k = rand(vec2(j, z), iIter + 1.0);
+	
+	
+	if (index != 0.0){
+		if (index == iColorIndex){
+			if (v.z >= iArgs[4] && v.z <= iArgs[5]){	
+				if (k <  iArgs[0]){
+					return iArgs[1];
+				}else if ( k < iArgs[2]){
+					return iArgs[3];
+				}else{		
+					float xContPosi = voxel(vec3(v.x + 1.0, v.y, v.z));
+					float xContNega = voxel(vec3(v.x + -1.0, v.y, v.z));
+					float yContPosi = voxel(vec3(v.x, v.y + 1.0, v.z));
+					float yContNega = voxel(vec3(v.x, v.y + -1.0, v.z));
+						
+					if (xContNega != 0.0 || xContPosi != 0.0 || yContNega != 0.0 || yContPosi != 0.0){
+						if (xContNega == iColorIndex || xContPosi == iColorIndex || yContNega == iColorIndex || yContPosi == iColorIndex){
+							if (xContNega == iArgs[1] || xContPosi == iArgs[1] || yContNega == iArgs[1] || yContPosi == iArgs[1]){
+								return iArgs[1];
+							}else if (xContNega == iArgs[3] || xContPosi == iArgs[3] || yContNega == iArgs[3] || yContPosi == iArgs[3]){
+								return iArgs[3];
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	return index;
+}
