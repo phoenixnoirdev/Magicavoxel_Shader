@@ -8,4 +8,9 @@
 
 ## Installation
 
-[Télécharger la derniere release](https://github.com/lachlanmcdonald/magicavoxel-shaders/releases/)
+[Télécharger la derniere release](https://github.com/phoenixnoirdev/magicavoxel-shader_TerraColor)
+
+
+[release-link]: https://github.com/phoenixnoirdev/magicavoxel-shader_TerraColor
+[license-link]: hhttps://github.com/phoenixnoirdev/magicavoxel-shader_TerraColor/blob/main/LICENSE.md
+[mv-link]: https://ephtracy.github.io/
