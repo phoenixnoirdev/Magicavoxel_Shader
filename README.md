@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/badge/Licence-MIT-blue.svg)][license-link]
 [![Supports](https://img.shields.io/badge/MagicaVoxel-0.99.6.2-brightgreen.svg)][mv-link]
 
-> Un shaders pour [MagicaVoxel](https://ephtracy.github.io/) Permet de simplifier une tâche courantes et répétitives.
+> Un shaders pour [MagicaVoxel](https://ephtracy.github.io/) qui permet de simplifier une tâche courantes et répétitives.
 
 ## Installation
 
