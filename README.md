@@ -1,4 +1,4 @@
-# Magicavoxel-Shader: TerraColor
+# Magicavoxel-Shader
 
 [![Release](https://img.shields.io/badge/Release-0.0.1-brightgreen.svg)][release-link]
 [![License](https://img.shields.io/badge/Licence-MIT-blue.svg)][license-link]
