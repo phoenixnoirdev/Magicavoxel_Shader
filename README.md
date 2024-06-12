@@ -18,4 +18,4 @@ Si vous rencontrez un problème avec ce shaders, veuillez examiner les problème
 [release-link]: https://github.com/phoenixnoirdev/magicavoxel-shader_TerraColor/releases/tag/0.0.1
 [license-link]: https://github.com/phoenixnoirdev/magicavoxel-shader_TerraColor/blob/main/LICENSE
 [mv-link]: https://ephtracy.github.io/
-[Wiki-link]: https://github.com/phoenixnoirdev/magicavoxel-shader/wiki/
+[Wiki-link]: https://github.com/phoenixnoirdev/magicavoxel-shader/wiki/Magicavoxel-Shaders
