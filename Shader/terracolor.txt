@@ -1,6 +1,6 @@
 // MIT License (MIT)
 // https://github.com/phoenixnoirdev/magicavoxel-shader_TerraColor
-// Copyright (c) 2021 Phoenixnoir Developpement 
+// Copyright (c) 2021 Phoenixnoir 
 // GL Shading Language.
 // V. 0.0.1
 //

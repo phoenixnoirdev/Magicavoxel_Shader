@@ -1,4 +1,4 @@
-// Copyright (c) 2019 Phoenixnoir Developpement 
+// Copyright (c) 2019 Phoenixnoir 
 // GL Shading Language.
 // v. 0.0.1
 //

@@ -1,0 +1,29 @@
+// Copyright (c) 2019 Phoenixnoir 
+// GL Shading Language.
+// v. 0.0.1
+//
+// Cleanother shader pour MagicaVoxel
+//
+// Shader qui permet de retirez tout les block a l'exeption de block de couleur selectionner
+//
+// xs cleanother
+//
+// ex: xs cleanother
+
+
+float map(vec3 v) {
+	
+	float index = voxel(v);
+	
+	if (index != 0.0) {
+		if (index != iColorIndex){
+				return 0.0;
+		}
+	}
+	
+	
+	
+	return index;
+}
+
+
