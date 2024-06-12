@@ -9,7 +9,7 @@
 
 ## Installation
 
-[Télécharger et copiez le fichiers "shader.txt" du répertoire shader dans le répertoire shader de votre installation MagicaVoxel.
+Télécharger et copiez le fichiers "shader.txt" du répertoire shader dans le répertoire shader de votre installation MagicaVoxel.
 
 ## Problèmes et suggestions
 Si vous rencontrez un problème avec les shaders, veuillez examiner les problèmes ouverts et créer un nouveau problème s’il n’existe pas déjà.
