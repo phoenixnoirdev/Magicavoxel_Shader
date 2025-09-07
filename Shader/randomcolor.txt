@@ -1,0 +1,100 @@
+// MIT License (MIT)
+// https://github.com/phoenixnoirdev/magicavoxel-shader_RandomColor
+// Copyright (c) 2021 Phoenixnoir 
+// GL Shading Language.
+// V. 1.0
+// Update: 07/09/2025
+// Compatible avec les version Magicavoxel:
+//	- 0.99.7.2
+//
+//Permets d'ajouter deux couleurs definit selon un pourcentage de chance de placement sur une hauteur minimum et maximum definit.
+//
+//
+//
+//Nouveautés
+//
+//Paramètres renommés pour plus de clarté (colotarget, freq1, color1, freq2, color2, zmin, zmax).
+//Fixe de la gestion de la recoloration dans une plage verticale Z (zmin → zmax).
+//Système de propagation via les voisins X/Y si aucune couleur n’est choisie, pour plus de continuité.
+//
+//
+//
+//	colotarget	→ couleur ciblée
+//	freq1		→ fréquence 1
+//	color1		→ couleur 1
+//	freq2		→ fréquence 2
+//	color2		→ couleur 2
+//	zmin		→ Hauteur minimum
+//	zmax		→ Hauteur maximum
+
+
+// xs_begin
+// arg : { var = 'colotarget'	name = 'colorTar'	value = '0' range = '1 255' step = '1' precision = '0' }
+// arg : { var = 'freq1'	name = 'Rand 1'	value = '0' range = '0 1' step = '0.1' precision = '1' }
+// arg : { var = 'color1'	name = 'Color 1'	value = '0' range = '1 255' step = '1' precision = '0' }
+// arg : { var = 'freq2'	name = 'Rand 2'	value = '0' range = '0 1' step = '0.1' precision = '1' }
+// arg : { var = 'color2'	name = 'Color 2'	value = '0' range = '1 255' step = '1' precision = '0' }
+// arg : { var = 'zmin'	name = 'Z min'	value = '0' range = '0 255' step = '1' precision = '0' }
+// arg : { var = 'zmax'	name = 'Z max'	value = '0' range = '0 255' step = '1' precision = '0' }
+
+
+float rand(vec2 co, float seed)
+{
+	return fract(sin(dot(co.xy * seed, vec2(12.9898, 78.233))) * 43758.5453);
+}
+
+
+float map(vec3 v)
+{
+	float index = voxel(v);
+	
+	bool na = (iAxis == vec3(0.0, 0.0, 0.0));
+	float x = (na || iAxis.x == 1.0) ? v.x : 1.0;
+	float y = (na || iAxis.y == 1.0) ? v.y : 1.0;
+	float z = (na || iAxis.z == 1.0) ? v.z : 1.0;
+	float j = rand(vec2(x, y), iIter + 1.0);
+	float k = rand(vec2(j, z), iIter + 1.0);
+	
+	if (index != 0.0)
+	{
+		if (index == colotarget)
+		{
+			if ( v.z > zmin && v.z < zmax)
+			{
+				if (k < freq1)
+				{
+					return color1;
+				}
+				else if ( k < freq2)
+				{
+					return color2;
+				}
+				else
+				{
+					float xContPosi = voxel(vec3(v.x + 1.0, v.y, v.z));
+					float xContNega = voxel(vec3(v.x + -1.0, v.y, v.z));
+					float yContPosi = voxel(vec3(v.x, v.y + 1.0, v.z));
+					float yContNega = voxel(vec3(v.x, v.y + -1.0, v.z));
+					
+					
+					if (xContNega != 0.0 || xContPosi != 0.0 || yContNega != 0.0 || yContPosi != 0.0)
+					{
+						if (xContNega == colotarget || xContPosi == colotarget || yContNega == colotarget || yContPosi == colotarget)
+						{
+							if (xContNega == color1 || xContPosi == color1 || yContNega == color1 || yContPosi == color1)
+							{
+								return color1;
+							}
+							else if (xContNega == color2 || xContPosi == color2 || yContNega == color2 || yContPosi == color2)
+							{
+								return color2;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	return index;
+}
