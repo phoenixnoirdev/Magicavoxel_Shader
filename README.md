@@ -3,7 +3,7 @@
 [![Release](https://img.shields.io/badge/Release-0.0.1-brightgreen.svg)][release-link]
 [![License](https://img.shields.io/badge/Licence-MIT-blue.svg)][license-link]
 [![Wiki](https://img.shields.io/badge/Wiki-%20-blue.svg)][Wiki-link]
-[![Supports](https://img.shields.io/badge/MagicaVoxel-0.99.6.2-brightgreen.svg)][mv-link]
+[![Supports](https://img.shields.io/badge/MagicaVoxel-0.99.7.2-brightgreen.svg)][mv-link]
 
 > Des shaders pour [MagicaVoxel](https://ephtracy.github.io/) qui permet de simplifier des tâches courantes et répétitives.
 
