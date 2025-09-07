@@ -7,7 +7,7 @@
 // Compatible avec les version Magicavoxel:
 //	- 0.99.7.2
 //
-//Permets d'ajouter deux couleurs definit selon un pourcentage de chance de placement sur une hauteur minimum et maximum definit.
+//Permets de remplacer un couleur par deux couleurs definit selon un pourcentage de chance de placement sur une hauteur minimum et maximum definit.
 //
 //
 //
@@ -16,6 +16,7 @@
 //Paramètres renommés pour plus de clarté (colotarget, freq1, color1, freq2, color2, zmin, zmax).
 //Fixe de la gestion de la recoloration dans une plage verticale Z (zmin → zmax).
 //Système de propagation via les voisins X/Y si aucune couleur n’est choisie, pour plus de continuité.
+//Shader utilisable dans l'interface MagicaVoxel
 //
 //
 //

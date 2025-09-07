@@ -1,31 +1,36 @@
 // Copyright (c) 2019 Phoenixnoir 
 // GL Shading Language.
-// v. 0.0.1
+// V. 1.0
+// Update: 07/09/2025
+// Compatible avec les version Magicavoxel:
+//	- 0.99.7.2
 //
 // Underclean shader pour MagicaVoxel
 //
 // Shader qui permet de retirez tout les block sous terrain (Outil de conception Landscape)
 //
-// xs underclean
 //
-// ex: xs underclean
+//
+//Nouveautés
+//
+//Nettoyage du code
+//Shader utilisable dans l'interface MagicaVoxel
 
 
-float map(vec3 v) {
-	
+
+float map(vec3 v)
+{
 	float index = voxel(v);
 	
 	float zContPosi = voxel(vec3(v.x, v.y, v.z + 1.0));
 	
-	if (index != 0.0) {
-		if (zContPosi != 0.0) {
+	if (index != 0.0)
+	{
+		if (zContPosi != 0.0)
+		{
 			return 0.0;
 		}
 	}
 	
-	
-	
 	return index;
 }
-
-
