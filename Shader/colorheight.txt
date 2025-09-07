@@ -1,0 +1,51 @@
+// Copyright (c) 2019 Phoenixnoir 
+// GL Shading Language.
+// V. 1.0
+// Update: 07/09/2025
+// Compatible avec les version Magicavoxel:
+//	- 0.99.7.2
+//
+//
+//Shader qui permet d'appliquer une couleur a partir d'une hauteur plancher a une hauteur maximum sur une couleur selectionner dans la palette
+//
+//
+//
+//Nouveautés
+//
+//Paramètres renommés pour plus de clarté (colotarget, coloset, zmin, zmax).
+//Shader utilisable dans l'interface MagicaVoxel
+//
+//
+//
+//	colotarget	→ couleur ciblée
+//	coloset	→ couleur de remplacement
+//	zmin		→ Hauteur minimum
+//	zmax		→ Hauteur maximum
+
+
+
+// xs_begin
+// arg : { var = 'colotarget'	name = 'ColorTar'	value = '0' range = '1 255' step = '1' precision = '0' }
+// arg : { var = 'coloset'	name = 'ColorSet'	value = '0' range = '1 255' step = '1' precision = '0' }
+// arg : { var = 'zmin'	name = 'Z min'	value = '0' range = '0 255' step = '1' precision = '0' }
+// arg : { var = 'zmax'	name = 'Z max'	value = '0' range = '0 255' step = '1' precision = '0' }
+
+
+
+float map(vec3 v)
+{
+	float index = voxel(v);
+	
+	if (index != 0.0)
+	{
+		if (index == colotarget)
+		{
+			if (v.z >= zmin && v.z <= zmax)
+			{
+				return coloset;
+			}
+		}
+	}
+	
+	return index;
+}
